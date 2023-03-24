@@ -1,0 +1,19 @@
+ALGORITHM sum_distinct
+VAR
+    sum INTEGER := 0 ;
+    t ARRAY_OF INTEGER;
+    v ARRAY_OF INTEGER;
+BEGIN
+     FOR i FROM 0 TO t.length-1 STEP 1  DO
+         FOR j FROM 0 TO v.length-1 STEP 1  DO
+            IF (t[i] <> t[j]) THEN
+                sum := sum+t[i];
+            END_IF
+            
+            
+            
+
+           
+         END_FOR
+     END_FOR
+END
