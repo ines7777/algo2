@@ -1,19 +1,26 @@
 ALGORITHM sum_distinct
 VAR
     sum INTEGER := 0 ;
-    t ARRAY_OF INTEGER;
-    v ARRAY_OF INTEGER;
+    t ARRAY_OF INTEGER[3];
+    v ARRAY_OF INTEGER[4];
+    i,j INTEGER;
+    sum INTEGER :=0;
+    found BOOLEAN;
 BEGIN
-     FOR i FROM 0 TO t.length-1 STEP 1  DO
-         FOR j FROM 0 TO v.length-1 STEP 1  DO
-            IF (t[i] <> t[j]) THEN
-                sum := sum+t[i];
-            END_IF
-            
-            
-            
 
-           
+    t := {1,5,6};
+    v :={5,9,1,4};
+     FOR i FROM 0 TO t.length-1 STEP 1  DO
+         found:=false;
+         FOR j FROM 0 TO v.length-1 STEP 1  DO
+            IF (t[i] == v[j]) THEN
+                found:=true;
+                break;
+            END_IF
+        
          END_FOR
+         IF (NOT found) THEN
+            sum:=sum+v[i];
+         END_IF
      END_FOR
 END

@@ -1,8 +1,8 @@
-PROCEDURE dot_product(v1,v2 ARRAY_OF INTEGER, n INTEGER)
+PROCEDURE dot_product(v1,v2 ARRAY_OF FLOAT, VAR ps FLOAT)
 VAR
-    v1 ARRAY_OF INTEGER;
-    v2 ARRAY_OF INTEGER;
-    ps INTEGER:=0;
+    
+    
+    ps :=0;
     n INTEGER;  // longueur des tab v1 et v2
 BEGIN
 
@@ -22,11 +22,11 @@ END
 
 ALGORITHM orthogonal
 VAR
-    t ARRAY_OF INTEGER;
-    v ARRAY_OF INTEGER;
-    n INTEGER;
+    t ARRAY_OF FLOAT;
+    v ARRAY_OF FLOAT;
+    p FLOAT;
 BEGIN
-   IF ( dot_product(t,v,n)==0) THEN
+   IF ( dot_product(t,v,p)==0) THEN
     ("orthogonal vectors");
    ELSE
     ("error");
@@ -34,12 +34,35 @@ BEGIN
   
 END
 
+FUNCTION dot_product(v1,v2 ARRAY_OF FLOAT, n INTEGER) : FLOAT
+VAR
+    
+    ps FLOAT:=0;
+  
+BEGIN
+    
+FOR i FROM 0 TO n-1 STEP 1  DO
+    read(v1[i]);
+    read(v2[i]);
+END_FOR
+
+FOR i FROM 0 TO n-1 STEP 1 DO
+    
+     ps:= v1[i]*v2[i]+ps;
+        
+END_FOR
+ 
+END
+    RETURN ps ;
+END
+
 
 ALGORITHM orthogonal
 VAR
-    t ARRAY_OF INTEGER;
-    v ARRAY_OF INTEGER;
+    t ARRAY_OF FLOAT;
+    v ARRAY_OF FLOAT;
     n INTEGER;
+    p FLOAT;
 BEGIN
     p:= dot_product(t,v,n);
     IF (p==0) THEN
